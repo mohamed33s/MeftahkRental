@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 } */
+
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600&family=Noto+Sans&display=swap");
+
+body {
+  font-family: "Cairo", sans-serif !important;
+  font-weight: 600 !important;
+  background-color: #fffff6 !important;
+}
+
+.Navbar {
+  background-color: #ebd962 !important;
+  color: white !important;
+  position: static;
+  top: 0px;
+}
+
+.card-cars {
+  max-width: 70%;
+  padding: 2em;
+  border-radius: 8px;
+  opacity: 88%;
+  margin: 5% auto;
+}
+
+
+
+.selected {
+  background-color: #f7c4c4;
+}
+
+.tableAppointment {
+  background-color: #dff2e2;
+}
