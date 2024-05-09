@@ -7,6 +7,10 @@ function App() {
     <div className="App">
       <NavBar />
 
+      <div className="titleTxt">
+        <p>اختر سيارتك</p>
+      </div>
+
       <Cars />
     </div>
   );
