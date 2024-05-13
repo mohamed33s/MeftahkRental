@@ -3,55 +3,61 @@ import Booking from "./Booking";
 import Accordion from "react-bootstrap/Accordion";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Card, Row, Col } from "react-bootstrap";
+import Rating from "react-rating-stars-component";
 
 export default function Cars() {
   const [itemsInfoCars, setItemsّInfoCars] = useState([]);
 
   useEffect(() => {
     axios
-      .get(`https://663c4fc617145c4d8c35c74a.mockapi.io/InfoCars`)
-      .then((response) => {
-        console.log(response.data);
-        setItemsّInfoCars(response.data);
-      });
+      .get("https://663c4fc617145c4d8c35c74a.mockapi.io/InfoCars")
+      .then((response) => setItemsّInfoCars(response.data))
+      .catch((error) => console.log(error));
   }, []);
+  itemsInfoCars.sort((a, b) => b.RateCar - a.RateCar);
   return (
     <div>
-      {itemsInfoCars
-        .sort((a, b) => b.RateCar - a.RateCar)
-        .map((item) => (
-          <div class="card-cars card mb-3" key={item.id}>
-            <div class="row g-0">
-              <div class="col-md-4">
-                <img
-                  src={item.ImgCar}
-                  class="img-fluid rounded-start"
-                  alt="..."
-                ></img>
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title">{item.NameCar}</h5>
-                  <h4 class="card-title">{item.ModelCar}</h4>
-                  <p class="card-text">{item.StateCar}</p>
-                  <p class="card-text">
-                    <small class="text-muted">{item.RateCar}</small>
-                  </p>
-                  <Accordion defaultActiveKey={["1"]} alwaysOpen>
-                    <Accordion.Item eventKey="0">
-                      <Accordion.Header>
-                        <td>احجزها</td>
-                      </Accordion.Header>
-                      <Accordion.Body>
-                        <Booking />
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="titleTxt">
+        <p>اختر سيارتك</p>
+      </div>
+      {itemsInfoCars.map((item) => (
+        <Card className="card-cars mb-3" key={item.id}>
+          <Row className="g-0">
+            <Col md={4}>
+              <Card.Img
+                src={item.ImgCar}
+                className="img-fluid rounded-start"
+                alt="..."
+              />
+            </Col>
+            <Col md={8}>
+              <Card.Body>
+                <Card.Title>{item.NameCar}</Card.Title>
+                <Card.Title>{item.ModelCar}</Card.Title>
+                <Card.Text>{item.StateCar}</Card.Text>
+                <Rating
+                  count={5}
+                  size={15}
+                  activeColor="#ffd700"
+                  value={item.RateCar}
+                  edit={false}
+                />
+                <Accordion defaultActiveKey={["1"]} alwaysOpen>
+                  <Accordion.Item eventKey="0">
+                    <Accordion.Header>
+                      <td>احجزها</td>
+                    </Accordion.Header>
+                    <Accordion.Body>
+                      <Booking />
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </Card.Body>
+            </Col>
+          </Row>
+        </Card>
+      ))}
     </div>
   );
 }

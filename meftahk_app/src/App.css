@@ -20,6 +20,14 @@ body {
   top: 0px;
 }
 
+.Footer {
+  background-color: #232020 !important;
+  color: white !important;
+}
+
+.buttonHome {
+  margin: 20% 20% 20% 20%;
+}
 .card-cars {
   max-width: 70%;
   padding: 2em;
@@ -34,4 +42,11 @@ body {
 
 .tableAppointment {
   background-color: #dff2e2;
+}
+
+.formRegising {
+  margin: 10%;
+  padding: 5rem;
+  background-color: #2d2929;
+  color: white;
 }
