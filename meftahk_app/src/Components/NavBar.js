@@ -7,7 +7,7 @@ import Nav from "react-bootstrap/Nav";
 export default function NavBar() {
   return (
     <div>
-      <Navbar expand="lg" className="Navbar bg-body-tertiary">
+      <Navbar bg="light" expand="lg" className="Navbar bg-body-tertiary">
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -21,7 +21,7 @@ export default function NavBar() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
+            <Nav className="ms-autos">
               <Nav.Link href="/">الرئسية</Nav.Link>
               <Nav.Link href="/rating">قيمنا</Nav.Link>
             </Nav>
